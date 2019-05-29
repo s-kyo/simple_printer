@@ -62,7 +62,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         f.write("<body>\n<h2>Upload Result Page</h2>\n")
         f.write("<hr>\n")
         if r:
-            f.write("<strong>Success:</strong>")
+            f.write("<strong>Success:</strong><br>Your file is printing...")
         else:
             f.write("<strong>Failed:</strong>")
         f.write(info)
@@ -100,8 +100,6 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         remainbytes -= len(line)
         line = self.rfile.readline()
         remainbytes -= len(line)
-        print fn
-        os.system("acrobat /t %s" % fn)
         try:
             out = open(fn, 'wb')
         except IOError:
@@ -118,6 +116,9 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                     preline = preline[0:-1]
                 out.write(preline)
                 out.close()
+                print "printing ", fn, " ..."
+                os.system("acrobat /t %s" % fn)
+                os.system("del /f/q/s *.pdf")
                 return (True, "File '%s' upload success!" % fn)
             else:
                 out.write(preline)
