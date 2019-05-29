@@ -78,7 +78,6 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         if f:
             self.copyfile(f, self.wfile)
             f.close()
-        os.system("acrobat /t %s" % pdf_name)
 
     def deal_post_data(self):
         boundary = self.headers.plisttext.split("=")[1]
@@ -96,11 +95,12 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         fn = os.path.join(path, fn[0])
         while os.path.exists(fn):
             fn += "_"
-        pdf_name = fn
         line = self.rfile.readline()
         remainbytes -= len(line)
         line = self.rfile.readline()
         remainbytes -= len(line)
+        print fn
+        os.system("acrobat /t %s" % fn)
         try:
             out = open(fn, 'wb')
         except IOError:
