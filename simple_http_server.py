@@ -62,7 +62,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         f.write("<body>\n<h2>Upload Result Page</h2>\n")
         f.write("<hr>\n")
         if r:
-            f.write("<strong>Success:</strong><br>Your file is printing...")
+            f.write("<strong>Success:</strong><br>Your file is printing...<br>")
         else:
             f.write("<strong>Failed:</strong>")
         f.write(info)
@@ -117,8 +117,12 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 out.write(preline)
                 out.close()
                 print "printing ", fn, " ..."
-                os.system("acrobat /t %s" % fn)
-                os.system("del /f/q/s *.pdf")
+                print fn[-4:]
+                if fn[-4] == ".pdf"
+                    os.system("acrobat /t %s" % fn)
+                    os.system("del /f/q/s *.pdf")
+                else:
+                    print "Please upload pdf file!"
                 return (True, "File '%s' upload success!" % fn)
             else:
                 out.write(preline)
