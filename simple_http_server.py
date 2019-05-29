@@ -95,6 +95,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         fn = os.path.join(path, fn[0])
         while os.path.exists(fn):
             fn += "_"
+            return (False, "File exists")
         line = self.rfile.readline()
         remainbytes -= len(line)
         line = self.rfile.readline()
