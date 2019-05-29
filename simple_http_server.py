@@ -7,8 +7,8 @@ and HEAD requests in a fairly straightforward manner.
 
 __version__ = "0.1"
 __all__ = ["SimpleHTTPRequestHandler"]
-__author__ = "bones7456"
-__home_page__ = "http://li2z.cn/"
+__author__ = "Marcus"
+__home_page__ = "http://shijie-xu.github.io"
 
 import os
 import posixpath
@@ -65,9 +65,8 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             f.write("<strong>Failed:</strong>")
         f.write(info)
         f.write("<br><a href=\"%s\">back</a>" % self.headers['referer'])
-        f.write("<hr><small>Powered By: bones7456, check new version at ")
-        f.write("<a href=\"http://li2z.cn/?s=SimpleHTTPServerWithUpload\">")
-        f.write("here</a>.</small></body>\n</html>\n")
+        f.write("<hr><small>Powered By Shijie Xu, Alrights reserved.")
+        f.write("</small></body>\n</html>\n")
         length = f.tell()
         f.seek(0)
         self.send_response(200)
@@ -176,7 +175,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         f = StringIO()
         displaypath = cgi.escape(urllib.unquote(self.path))
         f.write('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
-        f.write("<html>\n<title>Directory listing for %s</title>\n" % displaypath)
+        f.write("<html>\n<title>Directory listing for %s -- LINKE</title>\n" % displaypath)
         f.write("<body>\n<h2>Directory listing for %s</h2>\n" % displaypath)
         f.write("<hr>\n")
         f.write("<form ENCTYPE=\"multipart/form-data\" method=\"post\">")
