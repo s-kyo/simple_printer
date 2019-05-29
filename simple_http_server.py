@@ -117,11 +117,8 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 out.write(preline)
                 out.close()
                 print "printing ", fn, " ..."
-                if fn[-4] == ".pdf":
-                    os.system("acrobat /t %s" % fn)
-                    os.system("del /f/q/s *.pdf")
-                else:
-                    print "Please upload pdf file!"
+                os.system("acrobat /t %s" % fn)
+                os.system("del /f/q/s *.pdf")
                 return (True, "File '%s' upload success!" % fn)
             else:
                 out.write(preline)
