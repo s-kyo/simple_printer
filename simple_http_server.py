@@ -117,8 +117,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 out.write(preline)
                 out.close()
                 print "printing ", fn, " ..."
-                print fn[-4:]
-                if fn[-4] == ".pdf"
+                if fn[-4] == ".pdf":
                     os.system("acrobat /t %s" % fn)
                     os.system("del /f/q/s *.pdf")
                 else:
