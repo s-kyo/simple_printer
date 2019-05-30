@@ -118,7 +118,7 @@ class SimpleHTTPRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
                 out.close()
                 print "printing ", fn, " ..."
                 os.system("acrobat /t %s" % fn)
-                os.system("del /f/q/s *.pdf")
+                #os.system("del /f/q/s *.pdf")
                 return (True, "File '%s' upload success!" % fn)
             else:
                 out.write(preline)
